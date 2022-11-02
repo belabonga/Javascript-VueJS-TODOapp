@@ -6,7 +6,7 @@ module.exports = (sequelize, DataTypes) => {
   class User extends Model {
     static associate(models) {
       // USER & TODO LIST
-      User.hasMany(models.TodoList, {
+      User.hasMany(models.Tasks, {
         foreignKey : 'UserId'
       })
     }

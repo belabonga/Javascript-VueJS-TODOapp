@@ -17,7 +17,7 @@ route.use("/", SessionRoute);
 route.use(authentication);
 
 // TASK ENDPOINTS (MAIN ROUTE)
-route.use("/task", TaskRoute);
+route.use("/tasks", TaskRoute);
 
 // USE ERROR HELPER
 route.use(errorHelper)
