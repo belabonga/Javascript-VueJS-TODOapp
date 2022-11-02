@@ -5,10 +5,10 @@ if (process.env.NODE_ENV !== 'production') {
     console.log = function () {};
 }
 
-const cors      = require('cos')
+const cors      = require('cors')
     , express   = require('express')
     , app       = express()
-    , router    = require('./routers/index');
+    , router    = require('./routers/');
 
 app.use(cors());
 app.use(express.urlencoded({ extended : false }));
@@ -16,5 +16,6 @@ app.use(express.json());
 
 // AUTH
 // ROUTE UNDER THIS NEEDS AUTH
-route.use('/', router)
+app.use('/', router)
 
+module.exports = app

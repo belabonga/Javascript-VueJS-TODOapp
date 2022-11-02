@@ -11,7 +11,7 @@ module.exports = (sequelize, DataTypes) => {
       })
     }
   }
-  TodoList.init({
+  Tasks.init({
     name: {
       type : DataTypes.STRING,
       allowNull : false,
@@ -25,7 +25,7 @@ module.exports = (sequelize, DataTypes) => {
       }
     },
     status : {
-      type: Sequelize.STRING,
+      type: DataTypes.STRING,
       allowNull: false,
       defaultValue : 'on Hold'
     },

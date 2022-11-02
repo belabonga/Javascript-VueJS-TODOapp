@@ -74,7 +74,7 @@ class Controller {
 
   //? DELETE TASK
   // DELETE /tasks/:id
-  static async deleteBookmarks(req, res, next) {
+  static async deleteTask(req, res, next) {
     try {
       const id = +req.params.id
 
@@ -109,6 +109,37 @@ class Controller {
       );
     }
   }
+
+  //? UPDATE TASK STATUS
+// PATCH /tasks/:id
+static async updateTaskStatus(req, res, next) {
+    try {
+        const id = req.params.id
+        const { status } = req.body
+  
+        const findTask = await Task.findByPk(id)
+  
+        if(!findTask){
+          throw { name : 'DATA_NOT_FOUND' }
+        }
+  
+        const updatedTask = await Task.update({
+            status
+        }, {
+          where : { id }
+        })
+  
+        res.status(201).json({
+          statusCode: 201,
+          message: `TASK STATUS HAS BEEN UPDATED FROM ${findTask.status} to ${updatedTask.status}`
+        })
+  
+        console.log(chalk.green('SUCCESS FROM CONTROLLER : PATCH /tasks/:id'));
+      } catch (error) {
+        console.log(chalk.red('ERROR FROM CONTROLLER PATCH /tasks/:id : '), error);
+        next(error)
+      }
+}
 
 }
 
