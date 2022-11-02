@@ -1,11 +1,10 @@
 const route = require("express").Router();
 const { authentication } = require("../middlewares/authentication");
-const { Error } = require('../helpers/errors');
+const { Error } = require("../helpers/errors");
 
 // REDIRECT TO ROUTES FILES
-const TaskRoute = require('./task');
-const SessionRoute = require('./session');
-
+const TaskRoute = require("./task");
+const SessionRoute = require("./session");
 
 route.get("/", (req, res) => {
   res.send("Go! Go! Go!");
@@ -22,6 +21,6 @@ route.use(authentication);
 route.use("/tasks", TaskRoute);
 
 // USE ERROR HELPER
-route.use(Error)
+route.use(Error);
 
-module.exports = route
+module.exports = route;

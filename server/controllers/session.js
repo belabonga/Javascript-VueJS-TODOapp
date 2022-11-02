@@ -1,5 +1,5 @@
 const { comparePass, signToken } = require('../helpers/index')
-    , { User }                   = require('../models/user')
+    , { User }                   = require('../models/')
     , chalk                      = require('chalk');
 
 require('dotenv').config();
@@ -41,7 +41,7 @@ class Controller {
             // SEND DATA
             res.status(200).json({
                 access_token : access_token,
-                message : `User ${checkUser.username} has successfully logged in`,
+                message : `User ${checkUser.email} has successfully logged in`,
                 username : checkUser.username,
             });
 
@@ -56,15 +56,11 @@ class Controller {
     // POST /register
     static async register(req, res, next) {
         try {
-            const { username, email, password, phoneNumber, address } = req.body;
+            const { email, password } = req.body;
 
             const data = await User.create({
-                username,
                 email,
                 password,
-                role: `admin`,
-                phoneNumber,
-                address,
             });
 
             res.status(201).json({
@@ -72,7 +68,6 @@ class Controller {
                 data: {
                     id: data.id,
                     email: data.email,
-                    username: data.username,
                 },
             });
 

@@ -5,14 +5,14 @@ class Error {
       case "SequelizeUniqueConstraintError":
         const errors = err.errors.map((error) => error.message);
         res.status(400).json({
-          message: errors,
+          message: errors[0],
         });
         break;
 
       case "SequelizeValidationError":
         const errors2 = err.errors.map((error) => error.message);
         res.status(400).json({
-          message: errors2,
+          message: errors2[0],
         });
         break;
 
