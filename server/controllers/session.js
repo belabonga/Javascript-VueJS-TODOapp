@@ -1,6 +1,5 @@
-const { comparePass, signToken } = require('../../helpers/helper')
-    , { User }                   = require('../../models/')
-    , { OAuth2Client }           = require("google-auth-library")
+const { comparePass, signToken } = require('../helpers/index')
+    , { User }                   = require('../models/user')
     , chalk                      = require('chalk');
 
 require('dotenv').config();
